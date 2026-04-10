@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track 3: Deepfake Detection, Localization, and Explainability | IJCAI 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+<!--        <li><a href="schedule.html">Schedule</a></li>-->
+        <li class="dropdown">
+            <a href="#">Challenge</a>
+            <ul class="dropdown-menu">
+<!--                <li><a href="challenge.html">Evaluate</a></li>-->
+                <li><a href="Track1.html">Track 1</a></li>
+                <li><a href="Track2.html">Track 2</a></li>
+                <li><a href="Track3.html">Track 3</a></li>
+<!--                <li><a href="datasets.html">Datasets</a></li>-->
+            </ul>
+        </li>
+<!--        <li><a href="Registration.html">Registration</a></li>-->
+        <li><a href="organizers.html">Organizers</a></li>
+        <li class="dropdown">
+            <a href="#">Past Workshops</a>
+            <ul class="dropdown-menu">
+                <li><a href="https://deepfake-workshop-ijcai2025.github.io/main/" target="_blank">IJCAI 2025</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="page-content">
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Track 3 Overview</b></h2>
+            <p>Deepfake realism has spurred numerous detection competitions, but most emphasize image-level classification, overlooking spatial localization and interpretable trace analysis. The localization of manipulated regions improves the explainability of decisions, and the increasing number of multimodal forgeries increases the risk.</p>
+            <p>We introduce the <b>Deepfake Detection, Localization, and Explainability Challenge</b>, supported by a large-scale multimodal deepfake description dataset (200K+ fake samples) that leverages Qwen3-VL to enrich the DDL-I corpus and advances spatial localization and explainability.</p>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Evaluation Metrics</b></h2>
+            <h3>Task Components</h3>
+            <ul>
+                <li><b>Real:</b> The image is real and the corresponding label is 0.</li>
+                <li><b>Fake:</b> The image is fake and the corresponding label is 1.</li>
+                <li><b>Detection:</b> The metrics for this task is the AUC score.</li>
+                <li><b>Localization:</b> The metrics for this task is the IoU score and F1 score.</li>
+                <li>The Final score is the average of the above three scores.</li>
+            </ul>
+            <center><img src="images/f1_score.png" style="width: 500px; height: auto;"></center>
+            <center><img src="images/final_score1.jpg" style="width: 500px; height: auto;"></center>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Submission Format</b></h2>
+            <p>The model output should be a single confidence number of the input image being fake and the corresponding predicted manipulated mask. The expected submission format is like below:</p>
+            <center><img src="images/image_format.png" style="width: 500px; height: auto;"></center>
+            <p><b>The submitted folder format is like below:</b></p>
+            <ul>
+                <li>prediction.txt</li>
+                <li>mask (folder)
+                    <ul>
+                        <li>000001.png</li>
+                        <li>000002.png</li>
+                        <li>000003.png</li>
+                        <li>...</li>
+                        <li>xxxxxx.png</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><b>Note:</b> The size of the predicted mask should be the same as the corresponding original image.</p>
+            <span style="color: red;"><b>Then compress them into a .zip file.</b></span>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Awards and Recognition</b></h2>
+            <ul>
+                <li><b>Monetary prizes:</b> Substantial monetary awards will be granted to top-performing teams.</li>
+                <li><b>Academic recognition:</b> Exceptional solutions will be invited for presentation at the IJCAI.</li>
+            </ul>
+        </div>
+
+<!--        <div class="card committee-section">-->
+<!--            <h2 class="section-header"><b>Related Resources</b></h2>-->
+<!--            <ul>-->
+<!--                <li>Visit <a href="datasets.html">Datasets</a> page for more information about the DDL-I dataset.</li>-->
+<!--                <li>Check <a href="challenge.html">Challenge Overview</a> for general competition rules.</li>-->
+<!--                <li>See <a href="Registration.html">Registration</a> for how to participate.</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+    </div>
+</div>
+
+<footer>
+    <p>Contact: workshop-deepfake@ijcai2026.org</p>
+</footer>
+</body>
+</html>

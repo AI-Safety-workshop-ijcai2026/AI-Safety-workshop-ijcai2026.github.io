@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track 2: General AIGC Audio-Video Detection | IJCAI 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+<!--        <li><a href="schedule.html">Schedule</a></li>-->
+        <li class="dropdown">
+            <a href="#">Challenge</a>
+            <ul class="dropdown-menu">
+<!--                <li><a href="challenge.html">Evaluate</a></li>-->
+                <li><a href="Track1.html">Track 1</a></li>
+                <li><a href="Track2.html">Track 2</a></li>
+                <li><a href="Track3.html">Track 3</a></li>
+<!--                <li><a href="datasets.html">Datasets</a></li>-->
+            </ul>
+        </li>
+<!--        <li><a href="Registration.html">Registration</a></li>-->
+        <li><a href="organizers.html">Organizers</a></li>
+        <li class="dropdown">
+            <a href="#">Past Workshops</a>
+            <ul class="dropdown-menu">
+                <li><a href="https://deepfake-workshop-ijcai2025.github.io/main/" target="_blank">IJCAI 2025</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="page-content">
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Track 2 Overview</b></h2>
+            <p>As audio-video generation becomes increasingly realistic, mitigating malicious misuse has become a key research priority. To raise awareness and accelerate defenses, we present a <b>General AIGC Audio-Vision Detection Challenge</b>, supported by a large-scale, high-quality multimodal dataset covering 25 generation techniques and three forgery modes to advance robust audio-visual detection.</p>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Evaluation Metrics</b></h2>
+            <h3>Task Components</h3>
+            <ul>
+                <li><b>Real:</b> The video is real, which means there is no fake segment in the video.</li>
+                <li><b>Fake:</b> The video is fake, which means there is at least one fake segment in the video.</li>
+                <li><b>Detection:</b> The metrics for this task is the AUC score.</li>
+                <li><b>Localization:</b> The metrics for this task are AP (Average Precision) and AR (Average Recall).</li>
+                <li>The Final score is the average of the above two scores.</li>
+            </ul>
+            <center><img src="images/average_percision.png" style="width: 500px; height: auto;"></center>
+            <center><img src="images/final_score2.jpg" style="width: 500px; height: auto;"></center>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Submission Format</b></h2>
+            <p>The model output should be a single confidence number of the input video being fake and the temporal localization of the fake segments in the input video. The expected format is a txt file and a json file with the following structure:</p>
+            <center><img src="images/audio_format_1.png" style="width: 500px; height: auto;"></center>
+            <p><b>Expected Format Structure:</b></p>
+            <center><img src="images/audio_format_2.png" style="width: 500px; height: auto;"></center>
+            <span style="color: red;"><b>Then compress them into a .zip file.</b></span>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Awards and Recognition</b></h2>
+            <ul>
+                <li><b>Monetary prizes:</b> Substantial monetary awards will be granted to top-performing teams.</li>
+                <li><b>Academic recognition:</b> Exceptional solutions will be invited for presentation at the IJCAI.</li>
+            </ul>
+        </div>
+
+<!--        <div class="card committee-section">-->
+<!--            <h2 class="section-header"><b>Related Resources</b></h2>-->
+<!--            <ul>-->
+<!--                <li>Visit <a href="datasets.html">Datasets</a> page for more information about the DDL-AV dataset.</li>-->
+<!--                <li>Check <a href="challenge.html">Challenge Overview</a> for general competition rules.</li>-->
+<!--&lt;!&ndash;                <li>See <a href="Registration.html">Registration</a> for how to participate.</li>&ndash;&gt;-->
+<!--            </ul>-->
+<!--        </div>-->
+    </div>
+</div>
+
+<footer>
+    <p>Contact: workshop-deepfake@ijcai2026.org</p>
+</footer>
+</body>
+</html>
