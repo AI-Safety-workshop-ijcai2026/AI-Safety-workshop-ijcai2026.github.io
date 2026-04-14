@@ -37,54 +37,71 @@
 <div class="container">
     <div class="page-content">
         <div class="card committee-section">
-            <h2 class="section-header"><b>Track 2 Overview</b></h2>
-            <p>As audio-video generation becomes increasingly realistic, mitigating malicious misuse has become a key research priority. To raise awareness and accelerate defenses, we present a <b>General AIGC Audio-Vision Detection Challenge</b>, supported by a large-scale, high-quality multimodal dataset covering 25 generation techniques and three forgery modes to advance robust audio-visual detection.</p>
+            <h2 class="section-header"><b>1. Overview</b></h2>
+            <p>This competition focuses on General AIGC Audio-Video Detection. To counter the growing threat of advanced video generation (e.g., Sora2, Veo3.1), we present DDL-GAV, a large-scale multi-modal dataset of 100k+ audio-video samples. It covers realistic & animated styles, four categories (people, animals, landscapes, objects), three forgery types (fake audio–fake video, fake audio–real video, real audio–fake video), and 23 generation techniques. The goal is to advance detection and support "AI for Good".</p>
+            <p><b>Competition link:</b> <a href="https://www.codabench.org/competitions/15532/" target="_blank">https://www.codabench.org/competitions/15532/</a></p>
         </div>
 
         <div class="card committee-section">
-            <h2 class="section-header"><b>Evaluation Metrics</b></h2>
+            <h2 class="section-header"><b>2. Evaluation Metrics</b></h2>
             <h3>Task Components</h3>
             <ul>
-                <li><b>Real:</b> The video is real, which means there is no fake segment in the video.</li>
-                <li><b>Fake:</b> The video is fake, which means there is at least one fake segment in the video.</li>
-                <li><b>Detection:</b> The metrics for this task is the AUC score.</li>
-                <li><b>Localization:</b> The metrics for this task are AP (Average Precision) and AR (Average Recall).</li>
-                <li>The Final score is the average of the above two scores.</li>
+                <li><b>Real-Real:</b> Both the audio and video modalities are real, meaning no forged modality exists.</li>
+                <li><b>Fake-Real:</b> The video modality is fake, while the audio modality is real.</li>
+                <li><b>Real-Fake:</b> The video modality is fake, while the audio modality is real.</li>
+                <li><b>Fake-Fake:</b> Both the audio and video modalities are fake.</li>
+                <li><b>Detection:</b> The evaluation metrics for this task are AUC, ACC, F1 and AP.</li>
+                <li><b>The final score is calculated as:</b> Final Score = 0.2×AUC + 0.3×ACC + 0.3×AP + 0.2×F1</li>
             </ul>
-            <center><img src="images/average_percision.png" style="width: 500px; height: auto;"></center>
-            <center><img src="images/final_score2.jpg" style="width: 500px; height: auto;"></center>
         </div>
 
         <div class="card committee-section">
-            <h2 class="section-header"><b>Submission Format</b></h2>
-            <p>The model output should be a single confidence number of the input video being fake and the temporal localization of the fake segments in the input video. The expected format is a txt file and a json file with the following structure:</p>
-            <center><img src="images/audio_format_1.png" style="width: 500px; height: auto;"></center>
-            <p><b>Expected Format Structure:</b></p>
-            <center><img src="images/audio_format_2.png" style="width: 500px; height: auto;"></center>
-            <span style="color: red;"><b>Then compress them into a .zip file.</b></span>
+            <h2 class="section-header"><b>3. Submission Format</b></h2>
+            <p>The model output should be a single confidence score indicating whether the input audio-video corresponds to a certain forgery pattern. The expected format is a txt file.（示例文件先空缺）</p>
         </div>
 
         <div class="card committee-section">
-            <h2 class="section-header"><b>Awards and Recognition</b></h2>
+            <h2 class="section-header"><b>4. Awards and Recognition</b></h2>
             <ul>
                 <li><b>Monetary prizes:</b> Substantial monetary awards will be granted to top-performing teams.</li>
                 <li><b>Academic recognition:</b> Exceptional solutions will be invited for presentation at the IJCAI.</li>
             </ul>
         </div>
 
-<!--        <div class="card committee-section">-->
-<!--            <h2 class="section-header"><b>Related Resources</b></h2>-->
-<!--            <ul>-->
-<!--                <li>Visit <a href="datasets.html">Datasets</a> page for more information about the DDL-AV dataset.</li>-->
-<!--                <li>Check <a href="challenge.html">Challenge Overview</a> for general competition rules.</li>-->
-<!--&lt;!&ndash;                <li>See <a href="Registration.html">Registration</a> for how to participate.</li>&ndash;&gt;-->
-<!--            </ul>-->
-<!--        </div>-->
+        <div class="card committee-section">
+            <h2 class="section-header"><b>5. Dataset</b></h2>
+            <p>The DDL-GAV dataset utilizes the MVAD dataset, which contains over 100000 audio-video samples. The visual styles include both realistic and anime styles, and the video content covers four categories: people, animals, objects, and scenes. It also includes three cross-modal forgery modes: fake video-real audio, fake video-fake audio, and real video-real audio. The dataset integrates 23 types of generators, covering text-to-video, image-to-video, video-to-video, and audio-to-video generation, making a significant contribution to advancing research in multimodal AIGC audio-video detection.</p>
+            <p><b>Paper Name:</b> 《MVAD: A Benchmark Dataset for Multimodal AI-Generated Video-Audio Detection》</p>
+            <p><b>Paper link:</b> <a href="https://arxiv.org/abs/2512.00336" target="_blank">https://arxiv.org/abs/2512.00336</a></p>
+            <p><b>GitHub repository:</b> <a href="https://github.com/HuMengXue0104/MVAD" target="_blank">https://github.com/HuMengXue0104/MVAD</a></p>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Competition Rules</b></h2>
+            
+            <h3>1. Model Submission Requirements</h3>
+            <p>Each track permits only one model submission to address the designated tasks.<br>
+            All pre-trained backbone models used must be open-source. Teams that develop proprietary backbone models during the competition are required to publicly release their model specifications and training protocols under an open-source license (e.g., MIT, Apache 2.0) during the competition period.<br>
+            Winning solutions must open-source their complete implementation, including:</p>
+            <ul>
+                <li>Training pipelines and hyperparameter configurations</li>
+                <li>Evaluation code and reproducibility documentation</li>
+                <li>Final model weights in standard formats</li>
+            </ul>
+
+            <h3>2. Dataset Usage Requirements</h3>
+            <p>Only organizer-recommended, publicly released datasets are permitted for training and evaluation.<br>
+            Participants may use extended samples generated from these recommended datasets via data augmentation or deepfake tools for training, but all generation tools used must be submitted to the organizers to ensure reproducibility.<br>
+            The use of any additional external datasets is strictly prohibited.</p>
+
+            <h3>3. Violations and Sanctions</h3>
+            <p>Violations of the above rules will result in disqualification. The organizing committee reserves the final authority over all competition-related matters.</p>
+        </div>
     </div>
 </div>
 
-<!--<footer>-->
-<!--    <p>Contact: workshop-deepfake@ijcai2026.org</p>-->
-<!--</footer>-->
+<footer>
+    <p>Contact: deepfake.ijcai2026@gmail.com</p>
+</footer>
 </body>
 </html>
