@@ -51,13 +51,29 @@
                 <li><b>Real-Fake:</b> The video modality is fake, while the audio modality is real.</li>
                 <li><b>Fake-Fake:</b> Both the audio and video modalities are fake.</li>
                 <li><b>Detection:</b> The evaluation metrics for this task are AUC, ACC, F1 and AP.</li>
-                <li><b>The final score is calculated as:</b> Final Score = 0.2×AUC + 0.3×ACC + 0.3×AP + 0.2×F1</li>
+                <li><b>The final score is calculated as:</b>
+                    <br>Binary Classification Score = 0.2×AUC+0.3×ACC+0.3×AP+0.2*F1
+                    <br>Four-Class Classification Score = 0.2×AUC+0.3×ACC+0.3×AP+0.2*F1
+                    <br>Final Score = 0.4*Binary Classification Score +0.6*Four-Class Classification Score
+                </li>
             </ul>
         </div>
 
         <div class="card committee-section">
             <h2 class="section-header"><b>3. Submission Format</b></h2>
-            <p>The model output should be a single confidence score indicating whether the input audio-video corresponds to a certain forgery pattern. The expected format is a txt file.（示例文件先空缺）</p>
+            <p>The output of the binary classification model should be a confidence score predicting whether the audio-video is forged, indicating whether the input audio-video is forged. The output of the four-class classification model should be a confidence score predicting the forgery category of the audio-video, indicating whether the input audio-video corresponds to a certain forgery pattern. The expected format is two txt files with the following structure:</p>
+            <ul>
+                <li>
+                    <b>binary classification</b>
+                    <br>
+                    <img src="images/binary.jpg" alt="Binary Classification Example" style="max-width: 100%; height: auto; margin: 10px 0;">
+                </li>
+                <li>
+                    <b>four-class classification</b>
+                    <br>
+                    <img src="images/four-class.jpg" alt="Four-Class Classification Example" style="max-width: 100%; height: auto; margin: 10px 0;">
+                </li>
+            </ul>
         </div>
 
         <div class="card committee-section">
