@@ -37,15 +37,6 @@
 <div class="container">
     <div class="page-content">
         <div class="card committee-section">
-            <center>
-                <p style="font-size: 1.2em; margin-bottom: 20px;">
-                    <b>Competition website:</b> 
-                    <a href="https://www.codabench.org/competitions/15686/" target="_blank" style="color: #007bff; text-decoration: none;">
-                        https://www.codabench.org/competitions/15686/
-                    </a>
-                </p>
-            </center>
-            
             <h2 class="section-header"><b>Track 3 Overview</b></h2>
             <p>Deepfake realism has spurred numerous detection competitions, but most emphasize image-level classification, overlooking spatial localization and interpretable trace analysis. The localization of manipulated regions improves the explainability of decisions, and the increasing number of multimodal forgeries increases the risk.</p>
             <p>We introduce the <b>Deepfake Detection, Localization, and Explainability Challenge</b>, supported by a large-scale multimodal deepfake description dataset (200K+ fake samples) that leverages Qwen3-VL to enrich the DDL-I corpus and advances spatial localization and explainability.</p>
@@ -59,6 +50,8 @@
             
             <p><b>Phase 2:</b> We selected the top ten teams from the Codebench leaderboard to advance to the semi-finals, and used the best result submitted by each team for a Rubric score. (The scoring rules will be announced later.) We combined the Rubric scores with the Codabench leaderboard scores to determine the final ranking.</p>
             <p>TimeLine: 6.1 - 6.8</p>
+            
+            <p><b>Competition website:</b> <a href="https://www.codabench.org/competitions/15686/" target="_blank">https://www.codabench.org/competitions/15686/</a></p>
         </div>
 
 <div class="card committee-section">
@@ -133,6 +126,28 @@
                 <li>[2] DDL: A Large-Scale Datasets for Deepfake Detection and Localization in Diversified Real-World Scenarios (<a href="https://arxiv.org/abs/2506.23292" target="_blank">https://arxiv.org/abs/2506.23292</a>)</li>
                 <li>[3] <a href="https://github.com/inclusionConf/DDL/blob/main/README.md" target="_blank">https://github.com/inclusionConf/DDL/blob/main/README.md</a></li>
             </ul>
+        </div>
+
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Competition Rules</b></h2>
+            
+            <h3>1. Model Submission Requirements</h3>
+            <p>Each track permits only one model submission to address the designated tasks.<br>
+            All pre-trained backbone models used must be open-source. Teams that develop proprietary backbone models during the competition are required to publicly release their model specifications and training protocols under an open-source license (e.g., MIT, Apache 2.0) during the competition period.<br>
+            Winning solutions must open-source their complete implementation, including:</p>
+            <ul>
+                <li>Training pipelines and hyperparameter configurations</li>
+                <li>Evaluation code and reproducibility documentation</li>
+                <li>Final model weights in standard formats</li>
+            </ul>
+
+            <h3>2. Dataset Usage Requirements</h3>
+            <p>Only organizer-recommended, publicly released datasets are permitted for training and evaluation.<br>
+            Participants may use extended samples generated from these recommended datasets via data augmentation or deepfake tools for training, but all generation tools used must be submitted to the organizers to ensure reproducibility.<br>
+            The use of any additional external datasets is strictly prohibited.</p>
+
+            <h3>3. Violations and Sanctions</h3>
+            <p>Violations of the above rules will result in disqualification. The organizing committee reserves the final authority over all competition-related matters.</p>
         </div>
     </div>
 </div>
