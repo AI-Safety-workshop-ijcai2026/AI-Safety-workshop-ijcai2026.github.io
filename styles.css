@@ -1114,3 +1114,39 @@ footer {
     align-items: center;
     margin-top: 10px;
 }
+
+
+/* --- 新增：按钮通用样式 --- */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--secondary-color); /* 使用你定义的蓝色变量 #3498db */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+    text-decoration: none; /* 防止被当成链接处理 */
+    display: inline-block;
+}
+
+/* 鼠标悬停效果 */
+button:hover {
+    background-color: #2980b9; /* 深一点的蓝色 */
+    transform: translateY(-2px); /* 微微上浮 */
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+}
+
+/* 鼠标点击效果 */
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+}
+
+/* 如果按钮被包裹在 <a> 标签中，移除下划线 */
+a button {
+    text-decoration: none;
+    color: #ffffff;
+}

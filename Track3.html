@@ -6,6 +6,7 @@
     <title>Track 3: Deepfake Detection, Localization, and Explainability | IJCAI 2026</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 
 <body>
@@ -40,40 +41,52 @@
             <h2 class="section-header"><b>Track 3 Overview</b></h2>
             <p>Deepfake realism has spurred numerous detection competitions, but most emphasize image-level classification, overlooking spatial localization and interpretable trace analysis. The localization of manipulated regions improves the explainability of decisions, and the increasing number of multimodal forgeries increases the risk.</p>
             <p>We introduce the <b>Deepfake Detection, Localization, and Explainability Challenge</b>, supported by a large-scale multimodal deepfake description dataset (100K+ samples) that leverages Qwen3-VL to enrich the DDL-I corpus and advances spatial localization and explainability.</p>
-            
+
             <h3>Dev Phase</h3>
             <p>In this phase, we provide a batch of image data for participants to familiarize themselves with the submission format. Participants can see their scores by submitting the results and adjust their training methods accordingly. Data download path:</p>
             <p><a href="https://modelscope.cn/datasets/DDLteam/DDL_X/files" target="_blank">https://modelscope.cn/datasets/DDLteam/DDL_X/files</a>.</p>
             <p>TimeLine: 4.22 - 5.14</p>
-            
+
             <h3>Test Phase</h3>
             <p><b>Phase 1:</b> We will release a new test set covering forgery detection, localization, and explainable tasks. Participants will perform inference on the test set based on the model trained in Train Phase, upload results according to the specified format, and the platform will automatically start the evaluation and generate scores.</p>
             <p>TimeLine: 5.15 - 5.31</p>
-            
+
             <p><b>Phase 2:</b> We selected the top ten teams from the Codebench leaderboard to advance to the semi-finals, and used the best result submitted by each team for a Rubric score. (The scoring rules will be announced later.) We combined the Rubric scores with the Codabench leaderboard scores to determine the final ranking.</p>
             <p>TimeLine: 6.1 - 6.8</p>
-            
+
             <p><b>Competition website:</b> <a href="https://www.codabench.org/competitions/15686/" target="_blank">https://www.codabench.org/competitions/15686/</a></p>
         </div>
 
+        <!-- 修改开始：Step 1 -->
         <div class="card committee-section">
-            <h2 class="section-header"><b>Registration</b></h2>
-            
-            <h3>Step 1: Register for the Challenge</h3>
-            <p>Don't miss your chance to participate in this exciting competition! Showcase your deepfake detection skills and compete against others. Fill out the form (<a href="https://modelscope.cn/datasets/DDLteam/DDL_X/file/view/master/DDL_X_Challenge_Dataset_EULA.pdf?id=187790&status=1" target="_blank">https://modelscope.cn/datasets/DDLteam/DDL_X/file/view/master/DDL_X_Challenge_Dataset_EULA.pdf?id=187790&status=1</a>) and send it to deepfake.ijcai2026@gmail.com.</p>
-            
-            <h3>Step 2: Register on Codabench Platform</h3>
-            <p>Participants will register on this platform (<a href="https://www.codabench.org/competitions/15686/" target="_blank">https://www.codabench.org/competitions/15686/</a>), which will provide training and testing data, evaluation scripts, and performance leaderboards.</p>
+            <h2 class="section-header"><b>Step 1: Register for the Challenge</b></h2>
+            <p style="margin-bottom: 1rem;">
+                Don't miss your chance to participate in this exciting competition! Showcase your deepfake detection skills and compete against others.
+            </p>
+            <!-- 链接已更新为你的 Google Form -->
+            <a href="https://docs.google.com/forms/d/1Bz9F9OSfZpAsBs4iiMmBix_2AGT7k_SLE8kkUn16wew/edit" target="_blank">
+                <button>Register Now</button>
+            </a>
+            <p style="margin-top: 1rem;">After registering, please follow the next step to complete your registration on Codabench.</p>
         </div>
 
-<div class="card committee-section">
+        <!-- 修改开始：Step 2 -->
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Step 2: Register on Codabench Platform</b></h2>
+            <p>
+                &#128293;&#128293; The challenge will be hosted on the <a style="color: blue;" href="https://www.codabench.org/competitions/15686/" target="_blank">Codabench platform</a>. Participants will register on this platform, which will provide training and testing data, evaluation scripts, and performance leaderboards.
+            </p>
+        </div>
+        <!-- 修改结束 -->
+
+        <div class="card committee-section">
             <h2 class="section-header"><b>Evaluation Metrics</b></h2>
             <ul>
                 <li><b>Detection:</b> The metrics for this task is the ACC score.</li>
                 <li><b>Localization:</b> The metrics for this task is the IoU score.</li>
                 <li><b>Explainability:</b> The metrics for this task is the BERTScore [1] and Rubrics score (for Test phase2, released later).</li>
             </ul>
-            
+
             <center>
                 <img src="images/acc.jpg" style="width: 500px; height: auto;">
             </center>
@@ -83,7 +96,7 @@
             <center>
                 <img src="images/codebench_score.jpg" style="width: 600px; height: auto;">
             </center>
-            
+
             <p><b>The score of phase2 can be calculated by following:</b></p>
             <center>
                 <img src="images/score2.jpg" style="width: 600px; height: auto;">
@@ -95,18 +108,18 @@
             <ul>
                 <li>The model output should be a single confidence number of the input image being fake and the corresponding predicted manipulated mask. The expected submission format is like below:</li>
             </ul>
-            
+
             <p>The submitted folder format is like below:</p>
             <p>json (folder)</p>
             <center>
                 <img src="images/json_folder.jpg" style="width: 600px; height: auto;">
             </center>
-            
+
             <p>The format of the JSON file can be referenced as follows:</p>
             <center>
                 <img src="images/json.jpg" style="width: 600px; height: auto;">
             </center>
-            
+
             <p>Required fields:</p>
             <ul>
                 <li>Bounding boxes: [xx, xx, xx, xx] (None for real images)</li>
@@ -116,11 +129,11 @@
             <center>
                 <img src="images/scoring_program_example.jpg" style="width: 700px; height: auto;">
             </center>
-            
+
             <p>It is important to note that the detection task calculates the ACC metric for all images, the localization task calculates the IoU metric only for images where the ground truth is fake, and the interpretation text calculates BERTScore for all images.</p>
-            
+
             <p>Please also note that the bounding box coordinates given in the interpretability text are mapped to the [1-1000] range, following the standard adopted by most current MLLM.</p>
-            
+
             <p>Assume the original image has a width of <b style="font-size: 1.3em;">W</b>, a height of <b style="font-size: 1.3em;">H</b>, and original coordinates of (<i>x₁, y₁, x₂, y₂</i>), the mapped coordinates are calculated as follows:</p>
             <center>
                 <img src="images/wh.jpg" style="width: 500px; height: auto;">
@@ -131,7 +144,7 @@
             <h2 class="section-header"><b>Datasets</b></h2>
             <p>Our dataset has been open-sourced, related information about the dataset can be found on [2, 3].</p>
             <p>Participants can use the image portions to train their models.</p>
-            
+
             <h3>References</h3>
             <ul>
                 <li>[1] BERTScore: Evaluating Text Generation with BERT (<a href="https://arxiv.org/abs/1904.09675" target="_blank">https://arxiv.org/abs/1904.09675</a>)</li>
@@ -142,7 +155,7 @@
 
         <div class="card committee-section">
             <h2 class="section-header"><b>Competition Rules</b></h2>
-            
+
             <h3>1. Model Submission Requirements</h3>
             <p>Each track permits only one model submission to address the designated tasks.<br>
             All pre-trained backbone models used must be open-source. Teams that develop proprietary backbone models during the competition are required to publicly release their model specifications and training protocols under an open-source license (e.g., MIT, Apache 2.0) during the competition period.<br>
