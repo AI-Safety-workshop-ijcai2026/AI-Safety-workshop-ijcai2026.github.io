@@ -1150,3 +1150,52 @@ a button {
     text-decoration: none;
     color: #ffffff;
 }
+
+/* --- Rubric Items Styles --- */
+.rubric-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--secondary-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.rubric-item h4 {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rubric-item h4 b {
+    color: var(--secondary-color);
+}
+
+.rubric-item p {
+    margin: 0.8rem 0;
+    color: #555;
+}
+
+.rubric-item ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.rubric-item ul li {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .rubric-item {
+        padding: 1rem;
+    }
+    
+    .rubric-item h4 {
+        font-size: 1.1rem;
+    }
+}
