@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | IJCAI 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Tab 切换样式 */
+        .tab-container {
+            margin-bottom: 2rem;
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            border-bottom: 3px solid #e0e0e0;
+            margin-bottom: 0;
+        }
+
+        .tab-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #555;
+            background: #f8f9fa;
+            border: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+            background: #eef7fc;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .tab-btn.active {
+            color: #fff;
+            background: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            box-shadow: none;
+        }
+
+        .tab-btn.active:hover {
+            background: #2980b9;
+            transform: none;
+        }
+
+        /* 排行榜表格样式 */
+        .leaderboard-table-wrapper {
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .leaderboard-table thead tr {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+        }
+
+        .leaderboard-table thead th {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .leaderboard-table thead th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .leaderboard-table thead th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .leaderboard-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .leaderboard-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .leaderboard-table tbody tr:hover {
+            background: #eef7fc;
+        }
+
+        .leaderboard-table td {
+            padding: 0.9rem 1.2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 排名徽章 */
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .rank-1 {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(255, 215, 0, 0.4);
+        }
+
+        .rank-2 {
+            background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(192, 192, 192, 0.4);
+        }
+
+        .rank-3 {
+            background: linear-gradient(135deg, #CD7F32, #B87333);
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(205, 127, 50, 0.4);
+        }
+
+        .rank-default {
+            background: #e0e0e0;
+            color: #555;
+        }
+
+        /* 分数高亮 */
+        .score-highlight {
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        /* Tab 内容面板 */
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* 排行榜说明区域 */
+        .leaderboard-note {
+            background: #fff9e6;
+            border-left: 4px solid #f0ad4e;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #665600;
+        }
+
+        .leaderboard-note i {
+            margin-right: 0.5rem;
+            color: #f0ad4e;
+        }
+
+        /* Phase 标签 */
+        .phase-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .phase-dev {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .phase-test1 {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .phase-test2 {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #999;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .tab-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .leaderboard-table {
+                font-size: 0.85rem;
+            }
+
+            .leaderboard-table td,
+            .leaderboard-table th {
+                padding: 0.6rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#">Challenge</a>
+            <ul class="dropdown-menu">
+                <li><a href="Track1.html">Track 1</a></li>
+                <li><a href="Track2.html">Track 2</a></li>
+                <li><a href="Track3.html">Track 3</a></li>
+            </ul>
+        </li>
+        <li><a href="leaderboard.html" class="active">Leaderboard</a></li>
+        <li><a href="organizers.html">Organizers</a></li>
+        <li class="dropdown">
+            <a href="#">Past Workshops</a>
+            <ul class="dropdown-menu">
+                <li><a href="https://deepfake-workshop-ijcai2025.github.io/main/" target="_blank">IJCAI 2025</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="page-content">
+        <div class="card committee-section">
+            <h2 class="section-header"><b>Leaderboard</b></h2>
+            <p>Select a track below to view the corresponding competition leaderboard.</p>
+
+            <!-- Tab 切换栏 -->
+            <div class="tab-container">
+                <div class="tab-nav">
+                    <button class="tab-btn" onclick="switchTab('track1')">Track 1</button>
+                    <button class="tab-btn" onclick="switchTab('track2')">Track 2</button>
+                    <button class="tab-btn active" onclick="switchTab('track3')">Track 3</button>
+                </div>
+            </div>
+
+            <!-- Track 1 Leaderboard -->
+            <div id="panel-track1" class="tab-panel">
+                <p><b>Track 1: The OpenClaw Security Attack and Defense Challenge</b></p>
+                <span class="phase-tag phase-dev">In Progress</span>
+
+                <div class="empty-state">
+                    <i class="fas fa-hourglass-half"></i>
+                    <p>The leaderboard for Track 1 is not yet available.</p>
+                    <p style="font-size: 0.95rem; margin-top: 0.5rem;">The competition is currently in progress. Results will be published here once the evaluation is completed.</p>
+                </div>
+
+                <div class="leaderboard-note">
+                    <i class="fas fa-info-circle"></i>
+                    Scores are calculated using the harmonic mean of Coverage Score and Attack Success Score. For detailed evaluation rules, please refer to <a href="Track1.html">Track 1</a> page.
+                </div>
+            </div>
+
+            <!-- Track 2 Leaderboard -->
+            <div id="panel-track2" class="tab-panel">
+                <p><b>Track 2: General AIGC Audio-Video Detection</b></p>
+                <span class="phase-tag phase-dev">In Progress</span>
+
+                <div class="empty-state">
+                    <i class="fas fa-hourglass-half"></i>
+                    <p>The leaderboard for Track 2 is not yet available.</p>
+                    <p style="font-size: 0.95rem; margin-top: 0.5rem;">The competition is currently in progress. Results will be published here once the evaluation is completed.</p>
+                </div>
+
+                <div class="leaderboard-note">
+                    <i class="fas fa-info-circle"></i>
+                    Final Score = 0.4 × Binary Classification Score + 0.6 × Four-Class Classification Score. For detailed evaluation rules, please refer to <a href="Track2.html">Track 2</a> page.
+                </div>
+            </div>
+
+            <!-- Track 3 Leaderboard -->
+            <div id="panel-track3" class="tab-panel active">
+                <p><b>Track 3: Deepfake Detection, Localization, and Explainability</b></p>
+                <span class="phase-tag phase-test2">Test Phase 2</span>
+
+                <div class="leaderboard-table-wrapper">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Final Score</th>
+                                <th>ACC</th>
+                                <th>IoU</th>
+                                <th>BERTScore</th>
+                                <th>Rubrics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="rank-badge rank-1">1</span></td>
+                                <td>HIT_VIRLAB</td>
+                                <td class="score-highlight">0.8940</td>
+                                <td>0.1995</td>
+                                <td>0.3079</td>
+                                <td>0.0943</td>
+                                <td>0.2923</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-2">2</span></td>
+                                <td>CBSR_what_the_dog_doing</td>
+                                <td class="score-highlight">0.7025</td>
+                                <td>0.1776</td>
+                                <td>0.2495</td>
+                                <td>0.0813</td>
+                                <td>0.1941</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-3">3</span></td>
+                                <td>Track Killer</td>
+                                <td class="score-highlight">0.6857</td>
+                                <td>0.1562</td>
+                                <td>0.2363</td>
+                                <td>0.0851</td>
+                                <td>0.2081</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">4</span></td>
+                                <td>hellohello</td>
+                                <td class="score-highlight">0.6181</td>
+                                <td>0.1601</td>
+                                <td>0.2200</td>
+                                <td>0.0769</td>
+                                <td>0.1610</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">5</span></td>
+                                <td>XQ999</td>
+                                <td class="score-highlight">0.5770</td>
+                                <td>0.1601</td>
+                                <td>0.1985</td>
+                                <td>0.0585</td>
+                                <td>0.1599</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">6</span></td>
+                                <td>xza123</td>
+                                <td class="score-highlight">0.3697</td>
+                                <td>0.1593</td>
+                                <td>0.1529</td>
+                                <td>0.0454</td>
+                                <td>0.0121</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">7</span></td>
+                                <td>ycc0417</td>
+                                <td class="score-highlight">0.3505</td>
+                                <td>0.1590</td>
+                                <td>0.1818</td>
+                                <td>0.0000</td>
+                                <td>0.0097</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">8</span></td>
+                                <td>EVOL Lab</td>
+                                <td class="score-highlight">0.2553</td>
+                                <td>0.1090</td>
+                                <td>0.1201</td>
+                                <td>0.0160</td>
+                                <td>0.0102</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">9</span></td>
+                                <td>NewTeam</td>
+                                <td class="score-highlight">0.2522</td>
+                                <td>0.0600</td>
+                                <td>0.1612</td>
+                                <td>0.0000</td>
+                                <td>0.0031</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">10</span></td>
+                                <td>ACVLAB</td>
+                                <td class="score-highlight">0.2407</td>
+                                <td>0.1081</td>
+                                <td>0.0754</td>
+                                <td>0.0395</td>
+                                <td>0.0177</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="leaderboard-note">
+                    <i class="fas fa-info-circle"></i>
+                    The leaderboard is based on the Test Phase 2 results. Final Score is calculated from the weighted combination of ACC, IoU, BERTScore, and Rubrics. For detailed evaluation rules, please refer to <a href="Track3.html">Track 3</a> page.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Contact: deepfake.ijcai2026@gmail.com</p>
+</footer>
+
+<script>
+    function switchTab(trackId) {
+        // 切换 Tab 按钮状态
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        // 切换面板显示
+        document.querySelectorAll('.tab-panel').forEach(function(panel) {
+            panel.classList.remove('active');
+        });
+        document.getElementById('panel-' + trackId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
