@@ -289,12 +289,44 @@
             <!-- Track 2 Leaderboard -->
             <div id="panel-track2" class="tab-panel">
                 <p><b>Track 2: General AIGC Audio-Video Detection</b></p>
-                <span class="phase-tag phase-dev">In Progress</span>
-
-                <div class="empty-state">
-                    <i class="fas fa-hourglass-half"></i>
-                    <p>The leaderboard for Track 2 is not yet available.</p>
-                    <p style="font-size: 0.95rem; margin-top: 0.5rem;">The competition is currently in progress. Results will be published here once the evaluation is completed.</p>
+                
+                <div class="leaderboard-table-wrapper">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Affiliation</th>
+                                <th>Final Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="rank-badge rank-1">1</span></td>
+                                <td>HIT VIRLAB</td>
+                                <td>Harbin Institute of Technology</td>
+                                <td class="score-highlight">0.8460</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-2">2</span></td>
+                                <td>ZJSU</td>
+                                <td>Zhejiang Gongshang University</td>
+                                <td class="score-highlight">0.8438</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-3">3</span></td>
+                                <td>AIGVDete</td>
+                                <td>Zhejiang University</td>
+                                <td class="score-highlight">0.8406</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">4</span></td>
+                                <td>MVADetection Team</td>
+                                <td>Individual Researcher</td>
+                                <td class="score-highlight">0.8349</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="leaderboard-note">
@@ -306,8 +338,7 @@
             <!-- Track 3 Leaderboard -->
             <div id="panel-track3" class="tab-panel active">
                 <p><b>Track 3: Deepfake Detection, Localization, and Explainability</b></p>
-                <span class="phase-tag phase-test2">Test Phase 2</span>
-
+                
                 <div class="leaderboard-table-wrapper">
                     <table class="leaderboard-table">
                         <thead>
@@ -361,7 +392,7 @@
 
                 <div class="leaderboard-note">
                     <i class="fas fa-info-circle"></i>
-                    The leaderboard is based on the Test Phase 2 results. Final Score is calculated from the weighted combination of ACC, IoU, BERTScore, and Rubrics. For detailed evaluation rules, please refer to <a href="Track3.html">Track 3</a> page.
+                    Final Score is calculated from the weighted combination of ACC, IoU, BERTScore, and Rubrics. For detailed evaluation rules, please refer to <a href="Track3.html">Track 3</a> page.
                 </div>
             </div>
         </div>
