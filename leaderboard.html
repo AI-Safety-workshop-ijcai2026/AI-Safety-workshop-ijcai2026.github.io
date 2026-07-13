@@ -265,21 +265,95 @@
             <!-- Tab 切换栏 -->
             <div class="tab-container">
                 <div class="tab-nav">
-                    <button class="tab-btn" onclick="switchTab('track1')">Track 1</button>
+                    <button class="tab-btn active" onclick="switchTab('track1')">Track 1</button>
                     <button class="tab-btn" onclick="switchTab('track2')">Track 2</button>
-                    <button class="tab-btn active" onclick="switchTab('track3')">Track 3</button>
+                    <button class="tab-btn" onclick="switchTab('track3')">Track 3</button>
                 </div>
             </div>
 
             <!-- Track 1 Leaderboard -->
-            <div id="panel-track1" class="tab-panel">
+            <div id="panel-track1" class="tab-panel active">
                 <p><b>Track 1: The OpenClaw Security Attack and Defense Challenge</b></p>
-                <span class="phase-tag phase-dev">In Progress</span>
 
-                <div class="empty-state">
-                    <i class="fas fa-hourglass-half"></i>
-                    <p>The leaderboard for Track 1 is not yet available.</p>
-                    <p style="font-size: 0.95rem; margin-top: 0.5rem;">The competition is currently in progress. Results will be published here once the evaluation is completed.</p>
+                <div class="leaderboard-table-wrapper">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Affiliation</th>
+                                <th>Final Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="rank-badge rank-1">1</span></td>
+                                <td>AISEC</td>
+                                <td>Xi'an Jiaotong University</td>
+                                <td class="score-highlight">1.00</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-2">2</span></td>
+                                <td>PoliteInjection</td>
+                                <td>Institute of Artificial Intelligence (TeleAI), China Telecom</td>
+                                <td class="score-highlight">0.95</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-3">3</span></td>
+                                <td>这题得烧不少Token</td>
+                                <td>Wuhan University</td>
+                                <td class="score-highlight">0.84</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">4</span></td>
+                                <td>HCLab</td>
+                                <td>Independent Researcher</td>
+                                <td class="score-highlight">0.79</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">5</span></td>
+                                <td>Wo Duzi Shengji</td>
+                                <td>Shenzhen Technology University</td>
+                                <td class="score-highlight">0.50</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">6</span></td>
+                                <td>wonder</td>
+                                <td>Hubei University of Technology</td>
+                                <td class="score-highlight">0.47</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">7</span></td>
+                                <td>111</td>
+                                <td>中国科学院信息工程研究所</td>
+                                <td class="score-highlight">0.42</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">8</span></td>
+                                <td>MoWan (魔丸)</td>
+                                <td>University of Science and Technology of China</td>
+                                <td class="score-highlight">0.39</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">9</span></td>
+                                <td>nick5419780528</td>
+                                <td>Baidu</td>
+                                <td class="score-highlight">0.27</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">10</span></td>
+                                <td>暗渡陈仓 (AnDuChenCang)</td>
+                                <td>Independent Researcher</td>
+                                <td class="score-highlight">0.26</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-default">10</span></td>
+                                <td>AAAtoken批发</td>
+                                <td>网络空间部队信息工程大学</td>
+                                <td class="score-highlight">0.26</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="leaderboard-note">
@@ -345,7 +419,7 @@
             </div>
 
             <!-- Track 3 Leaderboard -->
-            <div id="panel-track3" class="tab-panel active">
+            <div id="panel-track3" class="tab-panel">
                 <p><b>Track 3: Deepfake Detection, Localization, and Explainability</b></p>
                 
                 <div class="leaderboard-table-wrapper">
