@@ -422,7 +422,7 @@ footer {
 
 .table-header {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
     background: #f8f9fa;
     color: #000000;
     padding: 1rem;
@@ -431,7 +431,7 @@ footer {
 
 .table-row {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
     padding: 1rem;
     border-bottom: 1px solid #ecf0f1;
 }
