@@ -824,11 +824,12 @@ nav ul li .dropdown-menu {
     position: absolute; /* 绝对定位 */
     background-color: white; /* 下拉菜单背景颜色 */
     color: black; /* 下拉菜单字体颜色 */
-    min-width: 80px; /* 设置最小宽度 */
+    min-width: 120px; /* 设置最小宽度 */
     z-index: 1000; /* 确保下拉菜单在其他内容上方 */
     border-radius: 8px; /* 圆角边 */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
     padding: 10px 0; /* 上下内边距 */
+    white-space: nowrap; /* 防止下拉菜单文字换行 */
 }
 
 nav ul li:hover .dropdown-menu {
